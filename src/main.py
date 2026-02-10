@@ -1,5 +1,10 @@
+from controller import Controller
+from ventana_principal import iniciar_ventana
+
+
 def main():
-    pass
+    controller = Controller()
+    iniciar_ventana()
 
 
 if __name__ == "__main__":
