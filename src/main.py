@@ -4,7 +4,7 @@ from ventana_principal import iniciar_ventana
 
 def main():
     controller = Controller()
-    iniciar_ventana()
+    iniciar_ventana(controller)
 
 
 if __name__ == "__main__":

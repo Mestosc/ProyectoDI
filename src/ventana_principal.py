@@ -1,5 +1,7 @@
 import gi
 
+from controller import Controller
+
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
@@ -11,7 +13,7 @@ class Ventana(Gtk.Window):
 
     """
 
-    def __init__(self):
+    def __init__(self,controller: Controller):
         super().__init__(title="Ventana principal")
         modelo = Gtk.ListStore(int, str, int, int, float)
         layout = Gtk.BoxLayout(orientation=Gtk.Orientation.VERTICAL)
@@ -37,5 +39,5 @@ class Ventana(Gtk.Window):
 
 
 def iniciar_ventana(controller: Controller):
-    Ventana()
+    Ventana(controller)
     Gtk.main()

@@ -4,8 +4,8 @@ from typing import override, Any
 
 @dataclass
 class Libro:
+    titulo: str
     id: int | None = None
-    titulo: str = ""
     paginas_totales: int = 0
     paginas_leidas: int = 0
 
