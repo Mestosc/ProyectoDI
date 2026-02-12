@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import override, Any
+from typing import Any, override
 
 
 @dataclass
