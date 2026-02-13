@@ -8,6 +8,7 @@ class Libro:
     id: int | None = None
     paginas_totales: int = 0
     paginas_leidas: int = 0
+    autor: str = "Desconocido"
 
     @property
     def porcentaje_leido(self) -> float:
@@ -20,6 +21,7 @@ class Libro:
         return (
             f"Libro(id={self.id},"
             f"titulo='{self.titulo}', "
+            f"autor='{self.autor}'"
             f"paginas_leidas={self.paginas_leidas}, "
             f"paginas_totales={self.paginas_totales}, "
             f"porcentaje_leido={self.porcentaje_leido}%)"

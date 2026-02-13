@@ -26,14 +26,15 @@ class Controller:
         try:
             with self._conexion() as conn:
                 cursor = conn.cursor()
-                cursor.execute(
+                _ = cursor.execute(
                     "SELECT name FROM sqlite_master WHERE type='table' AND name='libros'"
                 )
                 if not cursor.fetchone():
-                    cursor.execute("""
+                    _ = cursor.execute("""
                         CREATE TABLE libros (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
                             titulo TEXT NOT NULL,
+                            autor TEXT NOT NULL,
                             paginas_leidas INTEGER DEFAULT 0,
                             paginas_totales INTEGER DEFAULT 0
                         )
@@ -56,14 +57,15 @@ class Controller:
             with self._conexion() as conn:
                 conn.row_factory = sqlite3.Row  # Nos permite usar los nombres de las columnas de una tabla para referirnos a cada dato
                 cursor = conn.cursor()
-                cursor.execute(
-                    "SELECT id, titulo, paginas_leidas, paginas_totales FROM libros WHERE id = ?",
+                _ = cursor.execute(
+                    "SELECT id, titulo, autor, paginas_leidas, paginas_totales FROM libros WHERE id = ?",
                     (bd_id,),
                 )
                 f = cursor.fetchone()
                 if f:
                     return Libro(
                         id=f["id"],
+                        autor=f["autor"],
                         titulo=f["titulo"],
                         paginas_leidas=f["paginas_leidas"],
                         paginas_totales=f["paginas_totales"],
@@ -78,8 +80,8 @@ class Controller:
             with self._conexion() as conn:
                 conn.row_factory = sqlite3.Row
                 cursor = conn.cursor()
-                cursor.execute(
-                    "SELECT id, titulo, paginas_leidas, paginas_totales FROM libros ORDER BY id"
+                _ = cursor.execute(
+                    "SELECT id, titulo, autor, paginas_leidas, paginas_totales FROM libros ORDER BY id"
                 )
                 filas = cursor.fetchall()
                 return [Libro(**dict(f)) for f in filas]
@@ -92,9 +94,9 @@ class Controller:
         try:
             with self._conexion() as conn:
                 cursor = conn.cursor()
-                cursor.execute(
-                    "INSERT INTO libros (titulo, paginas_leidas, paginas_totales) VALUES (?,?,?)",
-                    (libro.titulo, libro.paginas_leidas, libro.paginas_totales),
+                _ = cursor.execute(
+                    "INSERT INTO libros (titulo, autor, paginas_leidas, paginas_totales) VALUES (?,?,?,?)",
+                    (libro.titulo, libro.autor, libro.paginas_leidas, libro.paginas_totales),
                 )
                 return True
         except sqlite3.Error as e:
@@ -116,7 +118,7 @@ class Controller:
         l_act_dict = asdict(libro)
         l_ant_dict = asdict(libro_ant)
 
-        columnas = {"titulo", "paginas_leidas", "paginas_totales"}
+        columnas = {"titulo", "paginas_leidas", "paginas_totales", "autor"}
         cambios = {
             k: v
             for k, v in l_act_dict.items()
@@ -129,7 +131,7 @@ class Controller:
         try:
             with self._conexion() as conn:
                 sql = f"UPDATE libros SET {', '.join(f'{k} = ?' for k in cambios)} WHERE id = ?"
-                conn.execute(sql, (*cambios.values(), libro.id))
+                _ = conn.execute(sql, (*cambios.values(), libro.id))
                 return True
         except sqlite3.Error as e:
             print(f"Error al actualizar el libro {libro.id}: {e}")

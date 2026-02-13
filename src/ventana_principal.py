@@ -5,7 +5,7 @@ from controller import Controller
 from formulario_anadir_datos import Formulario
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+from gi.repository import Gtk  # noqa: E402
 
 
 class Ventana(Gtk.Window):
@@ -15,20 +15,28 @@ class Ventana(Gtk.Window):
 
     """
 
-    def __init__(self, controller: Controller):
+    def __init__(self, controller: Controller):  # noqa: F811
+        """
+
+        Iniciar la ventana principal de la aplicacion
+        :param controller: El controller de la aplicacion
+        :type controller: Controller
+
+        """
         super().__init__(title="Ventana principal")
         self.controller: Controller = controller
-        modelo = Gtk.ListStore(int, str, int, int, str)
-        self.anadir_valores_bd(modelo)
+        self.modelo = Gtk.ListStore(int, str, str, int, int, str)
+        self.anadir_valores_bd()
         layout = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        boton = Gtk.Button(label="Añadir nuevo libro")
-        boton.connect("clicked", self.mostrar_formulario_anadir,self.controller)
-        self.tabla = Gtk.TreeView(model=modelo)
-        self.agregar_columna("ID",0)
+        boton = Gtk.Button.new_with_mnemonic(label="_Añadir nuevo libro")
+        boton.connect("clicked", self.mostrar_formulario_anadir, self.controller)
+        self.tabla = Gtk.TreeView(model=self.modelo)
+        self.agregar_columna("ID", 0)
         self.agregar_columna("Titulo", 1)
-        self.agregar_columna("Paginas Leidas", 2)
-        self.agregar_columna("Paginas totales", 3)
-        self.agregar_columna("Porcentaje leido", 4)
+        self.agregar_columna("Autor", 2)
+        self.agregar_columna("Paginas Leidas", 3)
+        self.agregar_columna("Paginas totales", 4)
+        self.agregar_columna("Porcentaje leido", 5)
         layout.pack_start(self.tabla, True, True, 0)
         layout.pack_start(boton, False, True, 0)
         self.add(layout)
@@ -39,23 +47,36 @@ class Ventana(Gtk.Window):
 
         Abstrae la agregacion de una columna a la tabla para no tener que ir creando el renderer y la columna de forma manual
 
+        :param titulo: El titulo de la columna
+        :type titulo: str
+        :param indice: El indice de la columna
+        :type indice: int
+
         """
         renderer = Gtk.CellRendererText()
         columna = Gtk.TreeViewColumn(titulo, renderer, text=indice)
         self.tabla.append_column(columna)
 
     def mostrar_formulario_anadir(self, evento, controller: Controller):
-        self.formulario_anadir = Formulario(controller)
-        self.formulario_anadir.show()
+        formulario_anadir = Formulario(controller,self)
+        formulario_anadir.show_all()
 
-    def anadir_valores_bd(self, modelo: Gtk.ListStore):
+    def anadir_valores_bd(self):
+        """
+
+        Añade valores de la base de datos en la tabla que usa la aplicacion visualmente
+        :param modelo: El modelo de datos usado por GTK
+        :type modelo: Gtk.ListStore
+
+        """
         libros = self.controller.obtener_todos_libros()
         if libros:
             for libro in libros:
-                modelo.append(
+                self.modelo.append(
                     [
                         libro.id,
                         libro.titulo,
+                        libro.autor,
                         libro.paginas_leidas,
                         libro.paginas_totales,
                         f"{libro.porcentaje_leido}%",
