@@ -1,6 +1,5 @@
 import gi
 
-import controller
 from controller import Controller
 from formulario_anadir_datos import Formulario
 
@@ -29,7 +28,7 @@ class Ventana(Gtk.Window):
         self.anadir_valores_bd()
         layout = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         boton = Gtk.Button.new_with_mnemonic(label="_Añadir nuevo libro")
-        boton.connect("clicked", self.mostrar_formulario_anadir, self.controller)
+        _ = boton.connect("clicked", self.mostrar_formulario_anadir, self.controller)
         self.tabla = Gtk.TreeView(model=self.modelo)
         self.agregar_columna("ID", 0)
         self.agregar_columna("Titulo", 1)
@@ -55,10 +54,10 @@ class Ventana(Gtk.Window):
         """
         renderer = Gtk.CellRendererText()
         columna = Gtk.TreeViewColumn(titulo, renderer, text=indice)
-        self.tabla.append_column(columna)
+        _ = self.tabla.append_column(columna)
 
-    def mostrar_formulario_anadir(self, evento, controller: Controller):
-        formulario_anadir = Formulario(controller,self)
+    def mostrar_formulario_anadir(self, _button: Gtk.Button, controller: Controller):
+        formulario_anadir = Formulario(controller, self)
         formulario_anadir.show_all()
 
     def anadir_valores_bd(self):
@@ -70,13 +69,12 @@ class Ventana(Gtk.Window):
 
         """
         libros = self.controller.obtener_todos_libros()
-        if libros:
-            for libro in libros:
+        for libro in libros:
                 self.modelo.append(
                     [
                         libro.id,
                         libro.titulo,
-                        libro.autor,
+                        str(libro.autor),
                         libro.paginas_leidas,
                         libro.paginas_totales,
                         f"{libro.porcentaje_leido}%",
@@ -85,5 +83,12 @@ class Ventana(Gtk.Window):
 
 
 def iniciar_ventana(controller: Controller):
+    """
+
+    Incia la ventana principal, de la aplicacion
+    :param controller: El controlador de la base de datos
+    :type: Controller
+
+    """
     Ventana(controller)
     Gtk.main()

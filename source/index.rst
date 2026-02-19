@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Proyecto GTK DI documentation
+Proyecto GTK DI Documentacion
 =============================
 
 Este proyecto es un sistema para rastrear lecturas de libros que alamacena los libros por generos, y te permite guardar las paginas que hayas leido
@@ -11,5 +11,6 @@ Este proyecto es un sistema para rastrear lecturas de libros que alamacena los l
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
-
+   :caption: Contenidos:
+   
+   modules

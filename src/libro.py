@@ -3,12 +3,21 @@ from typing import Any, override
 
 
 @dataclass
+class Autor:
+    nombre: str
+    id: int | None = None
+
+    def __str__(self) -> str:
+        return self.nombre
+
+
+@dataclass
 class Libro:
     titulo: str
     id: int | None = None
     paginas_totales: int = 0
     paginas_leidas: int = 0
-    autor: str = "Desconocido"
+    autor: Autor = None
 
     @property
     def porcentaje_leido(self) -> float:
@@ -40,4 +49,5 @@ class Libro:
 
 if __name__ == "__main__":
     librx = Libro(titulo="Amigos mios", paginas_leidas=10, paginas_totales=20)
+    librx.paginas_leidas = 12
     print(librx)
