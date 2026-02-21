@@ -114,10 +114,19 @@ class Controller:
         """
         if autor_info is None:
             nombre = "Desconocido"
+            autor_id = None
         elif isinstance(autor_info, Autor):
             nombre = autor_info.nombre
+            autor_id = autor_info.id
         else:
             nombre = str(autor_info)
+            autor_id = None
+
+        if autor_id is not None:
+            _ = cursor.execute("SELECT id FROM autores WHERE id = ?", (autor_id,))
+            row = cursor.fetchone()
+            if row:
+                return row[0]
 
         _ = cursor.execute("SELECT id FROM autores WHERE nombre = ?", (nombre,))
         row = cursor.fetchone()
@@ -187,6 +196,48 @@ class Controller:
             print(f"Error al obtener los libros: {e}")
             return []
 
+    def obtener_todos_autores(self) -> list[Autor]:
+        """
+        Retorna todos los autores registrados.
+        """
+        try:
+            with self._conexion() as conn:
+                conn.row_factory = sqlite3.Row
+                cursor = conn.cursor()
+                _ = cursor.execute("SELECT id, nombre FROM autores ORDER BY nombre")
+                filas = cursor.fetchall()
+                return [Autor(id=f["id"], nombre=f["nombre"]) for f in filas]
+        except sqlite3.Error as e:
+            print(f"Error al obtener los autores: {e}")
+            return []
+
+    def buscar_autor(self, criterio: str) -> Autor | None:
+        """
+        Busca un autor por su ID (si el criterio es numérico) o por su nombre.
+        No crea el autor si no existe.
+        """
+        try:
+            with self._conexion() as conn:
+                conn.row_factory = sqlite3.Row
+                cursor = conn.cursor()
+                
+                # Intentar por ID si es un número
+                if criterio.isdigit():
+                    _ = cursor.execute("SELECT id, nombre FROM autores WHERE id = ?", (int(criterio),))
+                    f = cursor.fetchone()
+                    if f:
+                        return Autor(id=f["id"], nombre=f["nombre"])
+                
+                # Intentar por nombre exacto
+                _ = cursor.execute("SELECT id, nombre FROM autores WHERE nombre = ?", (criterio,))
+                f = cursor.fetchone()
+                if f:
+                    return Autor(id=f["id"], nombre=f["nombre"])
+                    
+        except sqlite3.Error as e:
+            print(f"Error al buscar autor: {e}")
+        return None
+
     def insertar_libro(self, libro: Libro) -> bool:
         """
 
@@ -209,6 +260,19 @@ class Controller:
                 return True
         except sqlite3.Error as e:
             print(f"Error al insertar el libro: {e}")
+            return False
+
+    def insertar_autor(self, nombre: str) -> bool:
+        """
+        Inserta un nuevo autor en la base de datos.
+        """
+        try:
+            with self._conexion() as conn:
+                cursor = conn.cursor()
+                _ = cursor.execute("INSERT INTO autores (nombre) VALUES (?)", (nombre,))
+                return True
+        except sqlite3.Error as e:
+            print(f"Error al insertar el autor: {e}")
             return False
 
     def actualizar_libro(self, libro: Libro) -> bool:

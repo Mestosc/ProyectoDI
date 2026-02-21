@@ -1,7 +1,7 @@
 import gi
 
 from controller import Controller
-from formulario_anadir_datos import Formulario
+from formulario_anadir_datos import Formulario, FormularioAutores
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk  # noqa: E402
@@ -27,8 +27,19 @@ class Ventana(Gtk.Window):
         self.modelo = Gtk.ListStore(int, str, str, int, int, str)
         self.anadir_valores_bd()
         layout = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        boton = Gtk.Button.new_with_mnemonic(label="_Añadir nuevo libro")
-        _ = boton.connect("clicked", self.mostrar_formulario_anadir, self.controller)
+        
+        # Botones de accion
+        box_botones = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        
+        boton_libro = Gtk.Button.new_with_mnemonic(label="_Añadir nuevo libro")
+        _ = boton_libro.connect("clicked", self.mostrar_formulario_anadir, self.controller)
+        
+        boton_autor = Gtk.Button.new_with_mnemonic(label="Añadir nuevo _autor")
+        _ = boton_autor.connect("clicked", self.mostrar_formulario_autor, self.controller)
+        
+        box_botones.pack_start(boton_libro, True, True, 0)
+        box_botones.pack_start(boton_autor, True, True, 0)
+
         self.tabla = Gtk.TreeView(model=self.modelo)
         self.agregar_columna("ID", 0)
         self.agregar_columna("Titulo", 1)
@@ -36,8 +47,9 @@ class Ventana(Gtk.Window):
         self.agregar_columna("Paginas Leidas", 3)
         self.agregar_columna("Paginas totales", 4)
         self.agregar_columna("Porcentaje leido", 5)
+        
         layout.pack_start(self.tabla, True, True, 0)
-        layout.pack_start(boton, False, True, 0)
+        layout.pack_start(box_botones, False, True, 0)
         self.add(layout)
         self.show_all()
 
@@ -59,6 +71,10 @@ class Ventana(Gtk.Window):
     def mostrar_formulario_anadir(self, _button: Gtk.Button, controller: Controller):
         formulario_anadir = Formulario(controller, self)
         formulario_anadir.show_all()
+
+    def mostrar_formulario_autor(self, _button: Gtk.Button, controller: Controller):
+        formulario_autor = FormularioAutores(controller, self)
+        formulario_autor.show_all()
 
     def anadir_valores_bd(self):
         """

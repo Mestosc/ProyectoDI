@@ -1,5 +1,5 @@
-from controller import Controller
-from ventana_principal import iniciar_ventana
+from controller import Controller  # pyright: ignore[reportImplicitRelativeImport]
+from ventana_principal import iniciar_ventana  # pyright: ignore[reportImplicitRelativeImport]
 
 
 def main():
