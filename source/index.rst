@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Proyecto GTK DI: Rastreador de Lectura de Libros
-===============================================
+==================================================
 
 Bienvenido a la documentación de **Proyecto GTK DI**, una aplicación de escritorio intuitiva diseñada para gestionar tu biblioteca personal y realizar un seguimiento detallado de tu progreso de lectura.
 
@@ -13,7 +13,7 @@ Descripción del Proyecto
 Este sistema permite a los usuarios organizar sus libros por géneros y registrar el avance diario de sus lecturas. La aplicación está construida utilizando **Python** y **GTK** (PyGObject), ofreciendo una interfaz gráfica moderna y funcional para sistemas Linux.
 
 Características Principales
---------------------------
+----------------------------
 *   **Gestión Integral:** Añade, edita y organiza tus libros fácilmente.
 *   **Control de Progreso:** Registra el número de páginas leídas para visualizar tu avance en cada obra.
 *   **Base de Datos Local:** Utiliza SQLite para almacenar toda la información de forma segura y eficiente en el archivo ``libros.db``.
