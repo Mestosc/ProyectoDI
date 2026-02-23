@@ -1,0 +1,7 @@
+libro module
+============
+
+.. automodule:: libro
+   :members:
+   :show-inheritance:
+   :undoc-members:

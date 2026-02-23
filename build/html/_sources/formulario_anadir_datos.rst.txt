@@ -1,0 +1,7 @@
+formulario\_anadir\_datos module
+================================
+
+.. automodule:: formulario_anadir_datos
+   :members:
+   :show-inheritance:
+   :undoc-members:

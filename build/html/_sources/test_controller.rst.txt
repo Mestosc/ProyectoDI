@@ -1,0 +1,7 @@
+test\_controller module
+=======================
+
+.. automodule:: test_controller
+   :members:
+   :show-inheritance:
+   :undoc-members:

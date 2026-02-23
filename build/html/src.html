@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es" data-accent-color="violet" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>src package - documentación de Proyecto GTK DI -</title><link rel="index" title="Índice" href="genindex.html" /><link rel="search" title="Búsqueda" href="search.html" /><link rel="prev" title="src" href="modules.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=44020203" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="src package"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      
+      
+      <strong>Proyecto GTK DI</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Búsqueda" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Cambiar a modo claro"
+data-aria-light="Cambiar a modo oscuro"
+data-aria-dark="Cambiar a modo aŭtomata">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">src package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>En esta página</h3><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-src.controller">src.controller module</a><ul>
+<li><a class="reference internal" href="#src.controller.Controller"><code class="docutils literal notranslate"><span class="pre">Controller</span></code></a><ul>
+<li><a class="reference internal" href="#src.controller.Controller.actualizar_libro"><code class="docutils literal notranslate">actualizar_libro()</span></code></a></li>
+<li><a class="reference internal" href="#src.controller.Controller.buscar_autor"><code class="docutils literal notranslate">buscar_autor()</span></code></a></li>
+<li><a class="reference internal" href="#src.controller.Controller.insertar_autor"><code class="docutils literal notranslate">insertar_autor()</span></code></a></li>
+<li><a class="reference internal" href="#src.controller.Controller.insertar_libro"><code class="docutils literal notranslate">insertar_libro()</span></code></a></li>
+<li><a class="reference internal" href="#src.controller.Controller.obtener_libro"><code class="docutils literal notranslate">obtener_libro()</span></code></a></li>
+<li><a class="reference internal" href="#src.controller.Controller.obtener_todos_autores"><code class="docutils literal notranslate">obtener_todos_autores()</span></code></a></li>
+<li><a class="reference internal" href="#src.controller.Controller.obtener_todos_libros"><code class="docutils literal notranslate">obtener_todos_libros()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.formulario_anadir_datos">src.formulario_anadir_datos module</a><ul>
+<li><a class="reference internal" href="#src.formulario_anadir_datos.Formulario"><code class="docutils literal notranslate"><span class="pre">Formulario</span></code></a><ul>
+<li><a class="reference internal" href="#src.formulario_anadir_datos.Formulario.anadir_libro"><code class="docutils literal notranslate">anadir_libro()</span></code></a></li>
+<li><a class="reference internal" href="#src.formulario_anadir_datos.Formulario.ventana_padre"><code class="docutils literal notranslate">ventana_padre</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#src.formulario_anadir_datos.FormularioAutores"><code class="docutils literal notranslate"><span class="pre">FormularioAutores</span></code></a><ul>
+<li><a class="reference internal" href="#src.formulario_anadir_datos.FormularioAutores.anadir_autor"><code class="docutils literal notranslate">anadir_autor()</span></code></a></li>
+<li><a class="reference internal" href="#src.formulario_anadir_datos.FormularioAutores.controller"><code class="docutils literal notranslate">controller</span></code></a></li>
+<li><a class="reference internal" href="#src.formulario_anadir_datos.FormularioAutores.nombre"><code class="docutils literal notranslate">nombre</span></code></a></li>
+<li><a class="reference internal" href="#src.formulario_anadir_datos.FormularioAutores.ventana_padre"><code class="docutils literal notranslate">ventana_padre</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.libro">src.libro module</a><ul>
+<li><a class="reference internal" href="#src.libro.Autor"><code class="docutils literal notranslate"><span class="pre">Autor</span></code></a><ul>
+<li><a class="reference internal" href="#src.libro.Autor.id"><code class="docutils literal notranslate">id</span></code></a></li>
+<li><a class="reference internal" href="#src.libro.Autor.nombre"><code class="docutils literal notranslate">nombre</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#src.libro.Libro"><code class="docutils literal notranslate"><span class="pre">Libro</span></code></a><ul>
+<li><a class="reference internal" href="#src.libro.Libro.autor"><code class="docutils literal notranslate">autor</span></code></a></li>
+<li><a class="reference internal" href="#src.libro.Libro.id"><code class="docutils literal notranslate">id</span></code></a></li>
+<li><a class="reference internal" href="#src.libro.Libro.paginas_leidas"><code class="docutils literal notranslate">paginas_leidas</span></code></a></li>
+<li><a class="reference internal" href="#src.libro.Libro.paginas_totales"><code class="docutils literal notranslate">paginas_totales</span></code></a></li>
+<li><a class="reference internal" href="#src.libro.Libro.porcentaje_leido"><code class="docutils literal notranslate">porcentaje_leido</span></code></a></li>
+<li><a class="reference internal" href="#src.libro.Libro.titulo"><code class="docutils literal notranslate">titulo</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.main">src.main module</a><ul>
+<li><a class="reference internal" href="#src.main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.test_controller">src.test_controller module</a><ul>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo"><code class="docutils literal notranslate"><span class="pre">TestControllerExhaustivo</span></code></a><ul>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.setUp"><code class="docutils literal notranslate">setUp()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.tearDown"><code class="docutils literal notranslate">tearDown()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_actualizacion_sin_cambios"><code class="docutils literal notranslate">test_actualizacion_sin_cambios()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_actualizar_autor_libro"><code class="docutils literal notranslate">test_actualizar_autor_libro()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_actualizar_libro_sin_id"><code class="docutils literal notranslate">test_actualizar_libro_sin_id()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_autor_como_string"><code class="docutils literal notranslate">test_autor_como_string()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_caracteres_especiales_y_unicode"><code class="docutils literal notranslate">test_caracteres_especiales_y_unicode()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_datos_extremos"><code class="docutils literal notranslate">test_datos_extremos()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_ids_negativos_o_invalidos"><code class="docutils literal notranslate">test_ids_negativos_o_invalidos()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_intento_inyeccion_sql"><code class="docutils literal notranslate">test_intento_inyeccion_sql()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_mismo_autor_varios_libros"><code class="docutils literal notranslate">test_mismo_autor_varios_libros()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_persistencia_entre_instancias"><code class="docutils literal notranslate">test_persistencia_entre_instancias()</span></code></a></li>
+<li><a class="reference internal" href="#src.test_controller.TestControllerExhaustivo.test_violacion_logica_negocio"><code class="docutils literal notranslate">test_violacion_logica_negocio()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.update_error">src.update_error module</a><ul>
+<li><a class="reference internal" href="#src.update_error.UpdateError"><code class="docutils literal notranslate"><span class="pre">UpdateError</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src.ventana_principal">src.ventana_principal module</a><ul>
+<li><a class="reference internal" href="#src.ventana_principal.Ventana"><code class="docutils literal notranslate"><span class="pre">Ventana</span></code></a><ul>
+<li><a class="reference internal" href="#src.ventana_principal.Ventana.agregar_columna"><code class="docutils literal notranslate">agregar_columna()</span></code></a></li>
+<li><a class="reference internal" href="#src.ventana_principal.Ventana.anadir_valores_bd"><code class="docutils literal notranslate">anadir_valores_bd()</span></code></a></li>
+<li><a class="reference internal" href="#src.ventana_principal.Ventana.mostrar_formulario_anadir"><code class="docutils literal notranslate">mostrar_formulario_anadir()</span></code></a></li>
+<li><a class="reference internal" href="#src.ventana_principal.Ventana.mostrar_formulario_autor"><code class="docutils literal notranslate">mostrar_formulario_autor()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#src.ventana_principal.iniciar_ventana"><code class="docutils literal notranslate"><span class="pre">iniciar_ventana()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-src">Module contents</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Proyecto GTK DI</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="modules.html"><span itemprop="name">src</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">src package</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <section id="src-package">
+<h1>src package<a class="headerlink" href="#src-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-src.controller">
+<span id="src-controller-module"></span><h2>src.controller module<a class="headerlink" href="#module-src.controller" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.controller.Controller">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">src.controller.</span></span><span class="sig-name descname"><span class="pre">Controller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'../libros.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/controller.html#Controller"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.controller.Controller" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.controller.Controller.actualizar_libro">
+<span class="sig-name descname"><span class="pre">actualizar_libro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">libro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.libro.Libro" title="src.libro.Libro"><span class="pre">Libro</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/src/controller.html#Controller.actualizar_libro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.controller.Controller.actualizar_libro" title="Link to this definition">¶</a></dt>
+<dd><p>Actualiza los campos modificados de un libro.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.controller.Controller.buscar_autor">
+<span class="sig-name descname"><span class="pre">buscar_autor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criterio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.libro.Autor" title="src.libro.Autor"><span class="pre">Autor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/src/controller.html#Controller.buscar_autor"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.controller.Controller.buscar_autor" title="Link to this definition">¶</a></dt>
+<dd><p>Busca un autor por su ID (si el criterio es numérico) o por su nombre.
+No crea el autor si no existe.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.controller.Controller.insertar_autor">
+<span class="sig-name descname"><span class="pre">insertar_autor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/src/controller.html#Controller.insertar_autor"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.controller.Controller.insertar_autor" title="Link to this definition">¶</a></dt>
+<dd><p>Inserta un nuevo autor en la base de datos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.controller.Controller.insertar_libro">
+<span class="sig-name descname"><span class="pre">insertar_libro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">libro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.libro.Libro" title="src.libro.Libro"><span class="pre">Libro</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/src/controller.html#Controller.insertar_libro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.controller.Controller.insertar_libro" title="Link to this definition">¶</a></dt>
+<dd><p>Inserta un libro y retorna True si la operación fue exitosa.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.controller.Controller.obtener_libro">
+<span class="sig-name descname"><span class="pre">obtener_libro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bd_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.libro.Libro" title="src.libro.Libro"><span class="pre">Libro</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/src/controller.html#Controller.obtener_libro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.controller.Controller.obtener_libro" title="Link to this definition">¶</a></dt>
+<dd><p>Recupera un libro por su ID utilizando el gestor de contextos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.controller.Controller.obtener_todos_autores">
+<span class="sig-name descname"><span class="pre">obtener_todos_autores</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.libro.Autor" title="src.libro.Autor"><span class="pre">Autor</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/controller.html#Controller.obtener_todos_autores"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.controller.Controller.obtener_todos_autores" title="Link to this definition">¶</a></dt>
+<dd><p>Retorna todos los autores registrados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.controller.Controller.obtener_todos_libros">
+<span class="sig-name descname"><span class="pre">obtener_todos_libros</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.libro.Libro" title="src.libro.Libro"><span class="pre">Libro</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/controller.html#Controller.obtener_todos_libros"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.controller.Controller.obtener_todos_libros" title="Link to this definition">¶</a></dt>
+<dd><p>Retorna todos los libros registrados o una lista vacía.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.formulario_anadir_datos">
+<span id="src-formulario-anadir-datos-module"></span><h2>src.formulario_anadir_datos module<a class="headerlink" href="#module-src.formulario_anadir_datos" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.formulario_anadir_datos.Formulario">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">src.formulario_anadir_datos.</span></span><span class="sig-name descname"><span class="pre">Formulario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.controller.Controller" title="src.controller.Controller"><span class="pre">Controller</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ventana_padre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.ventana_principal.Ventana" title="src.ventana_principal.Ventana"><span class="pre">Ventana</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/formulario_anadir_datos.html#Formulario"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.formulario_anadir_datos.Formulario" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Window</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.formulario_anadir_datos.Formulario.anadir_libro">
+<span class="sig-name descname"><span class="pre">anadir_libro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">button</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Button</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/formulario_anadir_datos.html#Formulario.anadir_libro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.formulario_anadir_datos.Formulario.anadir_libro" title="Link to this definition">¶</a></dt>
+<dd><p>Añadir un libro, a la base de datos y refrescar el modelo que representa la tabla en mi aplicacion, usando la informacion puesta en el forumulario si no se pone nada se emplean valores por defecto.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.formulario_anadir_datos.Formulario.ventana_padre">
+<span class="sig-name descname"><span class="pre">ventana_padre</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.ventana_principal.Ventana" title="src.ventana_principal.Ventana"><span class="pre">Ventana</span></a></span><a class="headerlink" href="#src.formulario_anadir_datos.Formulario.ventana_padre" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.formulario_anadir_datos.FormularioAutores">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">src.formulario_anadir_datos.</span></span><span class="sig-name descname"><span class="pre">FormularioAutores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.controller.Controller" title="src.controller.Controller"><span class="pre">Controller</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ventana_padre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.ventana_principal.Ventana" title="src.ventana_principal.Ventana"><span class="pre">Ventana</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/formulario_anadir_datos.html#FormularioAutores"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.formulario_anadir_datos.FormularioAutores" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Window</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.formulario_anadir_datos.FormularioAutores.anadir_autor">
+<span class="sig-name descname"><span class="pre">anadir_autor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">button</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Button</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/formulario_anadir_datos.html#FormularioAutores.anadir_autor"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.formulario_anadir_datos.FormularioAutores.anadir_autor" title="Link to this definition">¶</a></dt>
+<dd><p>Añade un nuevo autor a la base de datos.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.formulario_anadir_datos.FormularioAutores.controller">
+<span class="sig-name descname"><span class="pre">controller</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.controller.Controller" title="src.controller.Controller"><span class="pre">Controller</span></a></span><a class="headerlink" href="#src.formulario_anadir_datos.FormularioAutores.controller" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.formulario_anadir_datos.FormularioAutores.nombre">
+<span class="sig-name descname"><span class="pre">nombre</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Gtk.Entry</span></span><a class="headerlink" href="#src.formulario_anadir_datos.FormularioAutores.nombre" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.formulario_anadir_datos.FormularioAutores.ventana_padre">
+<span class="sig-name descname"><span class="pre">ventana_padre</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.ventana_principal.Ventana" title="src.ventana_principal.Ventana"><span class="pre">Ventana</span></a></span><a class="headerlink" href="#src.formulario_anadir_datos.FormularioAutores.ventana_padre" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.libro">
+<span id="src-libro-module"></span><h2>src.libro module<a class="headerlink" href="#module-src.libro" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.libro.Autor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">src.libro.</span></span><span class="sig-name descname"><span class="pre">Autor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nombre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/libro.html#Autor"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.libro.Autor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.libro.Autor.id">
+<span class="sig-name descname"><span class="pre">id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#src.libro.Autor.id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.libro.Autor.nombre">
+<span class="sig-name descname"><span class="pre">nombre</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#src.libro.Autor.nombre" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.libro.Libro">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">src.libro.</span></span><span class="sig-name descname"><span class="pre">Libro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">titulo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paginas_totales</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paginas_leidas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.libro.Autor" title="src.libro.Autor"><span class="pre">src.libro.Autor</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/libro.html#Libro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.libro.Libro" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.libro.Libro.autor">
+<span class="sig-name descname"><span class="pre">autor</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.libro.Autor" title="src.libro.Autor"><span class="pre">Autor</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#src.libro.Libro.autor" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.libro.Libro.id">
+<span class="sig-name descname"><span class="pre">id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#src.libro.Libro.id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.libro.Libro.paginas_leidas">
+<span class="sig-name descname"><span class="pre">paginas_leidas</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#src.libro.Libro.paginas_leidas" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.libro.Libro.paginas_totales">
+<span class="sig-name descname"><span class="pre">paginas_totales</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#src.libro.Libro.paginas_totales" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="src.libro.Libro.porcentaje_leido">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">porcentaje_leido</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#src.libro.Libro.porcentaje_leido" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.libro.Libro.titulo">
+<span class="sig-name descname"><span class="pre">titulo</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#src.libro.Libro.titulo" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.main">
+<span id="src-main-module"></span><h2>src.main module<a class="headerlink" href="#module-src.main" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.main.main">
+<span class="sig-prename descclassname"><span class="pre">src.main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/main.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.main.main" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-src.test_controller">
+<span id="src-test-controller-module"></span><h2>src.test_controller module<a class="headerlink" href="#module-src.test_controller" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">src.test_controller.</span></span><span class="sig-name descname"><span class="pre">TestControllerExhaustivo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.setUp"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.setUp" title="Link to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.tearDown">
+<span class="sig-name descname"><span class="pre">tearDown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.tearDown"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.tearDown" title="Link to this definition">¶</a></dt>
+<dd><p>Hook method for deconstructing the test fixture after testing it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_actualizacion_sin_cambios">
+<span class="sig-name descname"><span class="pre">test_actualizacion_sin_cambios</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_actualizacion_sin_cambios"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_actualizacion_sin_cambios" title="Link to this definition">¶</a></dt>
+<dd><p>Verifica que actualizar con los mismos datos no rompe nada.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_actualizar_autor_libro">
+<span class="sig-name descname"><span class="pre">test_actualizar_autor_libro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_actualizar_autor_libro"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_actualizar_autor_libro" title="Link to this definition">¶</a></dt>
+<dd><p>Verifica que se puede cambiar el autor de un libro.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_actualizar_libro_sin_id">
+<span class="sig-name descname"><span class="pre">test_actualizar_libro_sin_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_actualizar_libro_sin_id"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_actualizar_libro_sin_id" title="Link to this definition">¶</a></dt>
+<dd><p>Verifica que no se puede actualizar un libro que no tiene ID asignado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_autor_como_string">
+<span class="sig-name descname"><span class="pre">test_autor_como_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_autor_como_string"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_autor_como_string" title="Link to this definition">¶</a></dt>
+<dd><p>Verifica que insertar un libro con autor como string funciona (retrocompatibilidad).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_caracteres_especiales_y_unicode">
+<span class="sig-name descname"><span class="pre">test_caracteres_especiales_y_unicode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_caracteres_especiales_y_unicode"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_caracteres_especiales_y_unicode" title="Link to this definition">¶</a></dt>
+<dd><p>Prueba con emojis y caracteres de otros idiomas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_datos_extremos">
+<span class="sig-name descname"><span class="pre">test_datos_extremos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_datos_extremos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_datos_extremos" title="Link to this definition">¶</a></dt>
+<dd><p>Prueba con valores muy grandes o strings masivos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_ids_negativos_o_invalidos">
+<span class="sig-name descname"><span class="pre">test_ids_negativos_o_invalidos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_ids_negativos_o_invalidos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_ids_negativos_o_invalidos" title="Link to this definition">¶</a></dt>
+<dd><p>Verifica comportamiento ante IDs absurdos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_intento_inyeccion_sql">
+<span class="sig-name descname"><span class="pre">test_intento_inyeccion_sql</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_intento_inyeccion_sql"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_intento_inyeccion_sql" title="Link to this definition">¶</a></dt>
+<dd><p>Intenta romper el sistema con strings maliciosos.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_mismo_autor_varios_libros">
+<span class="sig-name descname"><span class="pre">test_mismo_autor_varios_libros</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_mismo_autor_varios_libros"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_mismo_autor_varios_libros" title="Link to this definition">¶</a></dt>
+<dd><p>Verifica que varios libros pueden compartir el mismo registro de autor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_persistencia_entre_instancias">
+<span class="sig-name descname"><span class="pre">test_persistencia_entre_instancias</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_persistencia_entre_instancias"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_persistencia_entre_instancias" title="Link to this definition">¶</a></dt>
+<dd><p>Verifica que los datos persisten si cerramos y abrimos el controlador.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.test_controller.TestControllerExhaustivo.test_violacion_logica_negocio">
+<span class="sig-name descname"><span class="pre">test_violacion_logica_negocio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/test_controller.html#TestControllerExhaustivo.test_violacion_logica_negocio"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.test_controller.TestControllerExhaustivo.test_violacion_logica_negocio" title="Link to this definition">¶</a></dt>
+<dd><p>Verifica que el controlador/modelo maneja errores de lógica.
+(Ej: más páginas leídas que totales)</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.update_error">
+<span id="src-update-error-module"></span><h2>src.update_error module<a class="headerlink" href="#module-src.update_error" title="Link to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="src.update_error.UpdateError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">src.update_error.</span></span><span class="sig-name descname"><span class="pre">UpdateError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Error</span> <span class="pre">actualizando</span> <span class="pre">los</span> <span class="pre">datos</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">BD'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/update_error.html#UpdateError"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.update_error.UpdateError" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+</section>
+<section id="module-src.ventana_principal">
+<span id="src-ventana-principal-module"></span><h2>src.ventana_principal module<a class="headerlink" href="#module-src.ventana_principal" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ventana_principal.Ventana">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">src.ventana_principal.</span></span><span class="sig-name descname"><span class="pre">Ventana</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.controller.Controller" title="src.controller.Controller"><span class="pre">Controller</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/ventana_principal.html#Ventana"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.ventana_principal.Ventana" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Window</span></code></p>
+<p>Representacion de la ventana principal de la aplicacion</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.ventana_principal.Ventana.agregar_columna">
+<span class="sig-name descname"><span class="pre">agregar_columna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">titulo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indice</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/ventana_principal.html#Ventana.agregar_columna"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.ventana_principal.Ventana.agregar_columna" title="Link to this definition">¶</a></dt>
+<dd><p>Abstrae la agregacion de una columna a la tabla para no tener que ir creando el renderer y la columna de forma manual</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>titulo</strong> (<em>str</em>) – El titulo de la columna</p></li>
+<li><p><strong>indice</strong> (<em>int</em>) – El indice de la columna</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.ventana_principal.Ventana.anadir_valores_bd">
+<span class="sig-name descname"><span class="pre">anadir_valores_bd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/ventana_principal.html#Ventana.anadir_valores_bd"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.ventana_principal.Ventana.anadir_valores_bd" title="Link to this definition">¶</a></dt>
+<dd><p>Añade valores de la base de datos en la tabla que usa la aplicacion visualmente
+:param modelo: El modelo de datos usado por GTK
+:type modelo: Gtk.ListStore</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.ventana_principal.Ventana.mostrar_formulario_anadir">
+<span class="sig-name descname"><span class="pre">mostrar_formulario_anadir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_button</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Button</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.controller.Controller" title="src.controller.Controller"><span class="pre">Controller</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/ventana_principal.html#Ventana.mostrar_formulario_anadir"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.ventana_principal.Ventana.mostrar_formulario_anadir" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.ventana_principal.Ventana.mostrar_formulario_autor">
+<span class="sig-name descname"><span class="pre">mostrar_formulario_autor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_button</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Button</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.controller.Controller" title="src.controller.Controller"><span class="pre">Controller</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/ventana_principal.html#Ventana.mostrar_formulario_autor"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.ventana_principal.Ventana.mostrar_formulario_autor" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.ventana_principal.iniciar_ventana">
+<span class="sig-prename descclassname"><span class="pre">src.ventana_principal.</span></span><span class="sig-name descname"><span class="pre">iniciar_ventana</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.controller.Controller" title="src.controller.Controller"><span class="pre">Controller</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/ventana_principal.html#iniciar_ventana"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.ventana_principal.iniciar_ventana" title="Link to this definition">¶</a></dt>
+<dd><p>Incia la ventana principal, de la aplicacion
+:param controller: El controlador de la base de datos
+:type: Controller</p>
+</dd></dl>
+
+</section>
+<section id="module-src">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Reen al supro</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="modules.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Anterior</span><div class="title">src</div></div>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Oscar Rodriguez</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=e2bb6099"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=f85f4cfb"></script>
+      <script src="_static/shibuya.js?v=cac61aee"></script></body>
+</html>

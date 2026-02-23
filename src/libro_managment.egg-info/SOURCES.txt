@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+src/__init__.py
+src/controller.py
+src/formulario_anadir_datos.py
+src/libro.py
+src/main.py
+src/test_controller.py
+src/update_error.py
+src/ventana_principal.py
+src/libro_managment.egg-info/PKG-INFO
+src/libro_managment.egg-info/SOURCES.txt
+src/libro_managment.egg-info/dependency_links.txt
+src/libro_managment.egg-info/entry_points.txt
+src/libro_managment.egg-info/requires.txt
+src/libro_managment.egg-info/top_level.txt

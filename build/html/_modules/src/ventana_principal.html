@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es" data-accent-color="violet" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>src.ventana_principal - documentación de Proyecto GTK DI -</title><link rel="index" title="Índice" href="../../genindex.html" /><link rel="search" title="Búsqueda" href="../../search.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=44020203" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="src.ventana_principal"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>Proyecto GTK DI</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Búsqueda" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Cambiar a modo claro"
+data-aria-light="Cambiar a modo oscuro"
+data-aria-dark="Cambiar a modo aŭtomata">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contenidos:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../src.html">src package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Proyecto GTK DI</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Código de módulo</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">src.ventana_principal</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Código fuente para src.ventana_principal</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">gi</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">controller</span><span class="w"> </span><span class="kn">import</span> <span class="n">Controller</span>
+</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">formulario_anadir_datos</span><span class="w"> </span><span class="kn">import</span> <span class="n">Formulario</span><span class="p">,</span> <span class="n">FormularioAutores</span>
+</span><span data-line="5">
+</span><span data-line="6"><span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s2">&quot;Gtk&quot;</span><span class="p">,</span> <span class="s2">&quot;3.0&quot;</span><span class="p">)</span>
+</span><span data-line="7"><span class="kn">from</span><span class="w"> </span><span class="nn">gi.repository</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gtk</span>  <span class="c1"># noqa: E402</span>
+</span><span data-line="8">
+</span><span data-line="9">
+<div class="viewcode-block" id="Ventana">
+<a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana">[documentos]</a>
+</span><span data-line="10"><span class="k">class</span><span class="w"> </span><span class="nc">Ventana</span><span class="p">(</span><span class="n">Gtk</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
+</span><span data-line="11"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="12">
+</span><span data-line="13"><span class="sd">    Representacion de la ventana principal de la aplicacion</span>
+</span><span data-line="14">
+</span><span data-line="15"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="16">
+</span><span data-line="17">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span><span class="p">):</span>  <span class="c1"># noqa: F811</span>
+</span><span data-line="18"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="19">
+</span><span data-line="20"><span class="sd">        Iniciar la ventana principal de la aplicacion</span>
+</span><span data-line="21"><span class="sd">        :param controller: El controller de la aplicacion</span>
+</span><span data-line="22"><span class="sd">        :type controller: Controller</span>
+</span><span data-line="23">
+</span><span data-line="24"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="25">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Ventana principal&quot;</span><span class="p">)</span>
+</span><span data-line="26">        <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span> <span class="o">=</span> <span class="n">controller</span>
+</span><span data-line="27">        <span class="bp">self</span><span class="o">.</span><span class="n">modelo</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ListStore</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+</span><span data-line="28">        <span class="bp">self</span><span class="o">.</span><span class="n">anadir_valores_bd</span><span class="p">()</span>
+</span><span data-line="29">        <span class="n">layout</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">orientation</span><span class="o">=</span><span class="n">Gtk</span><span class="o">.</span><span class="n">Orientation</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+</span><span data-line="30">        
+</span><span data-line="31">        <span class="c1"># Botones de accion</span>
+</span><span data-line="32">        <span class="n">box_botones</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">orientation</span><span class="o">=</span><span class="n">Gtk</span><span class="o">.</span><span class="n">Orientation</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</span><span data-line="33">        
+</span><span data-line="34">        <span class="n">boton_libro</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_with_mnemonic</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;_Añadir nuevo libro&quot;</span><span class="p">)</span>
+</span><span data-line="35">        <span class="n">_</span> <span class="o">=</span> <span class="n">boton_libro</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;clicked&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_formulario_anadir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="p">)</span>
+</span><span data-line="36">        
+</span><span data-line="37">        <span class="n">boton_autor</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_with_mnemonic</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Añadir nuevo _autor&quot;</span><span class="p">)</span>
+</span><span data-line="38">        <span class="n">_</span> <span class="o">=</span> <span class="n">boton_autor</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;clicked&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_formulario_autor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="p">)</span>
+</span><span data-line="39">        
+</span><span data-line="40">        <span class="n">box_botones</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">boton_libro</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="41">        <span class="n">box_botones</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">boton_autor</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="42">
+</span><span data-line="43">        <span class="bp">self</span><span class="o">.</span><span class="n">tabla</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">TreeView</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">modelo</span><span class="p">)</span>
+</span><span data-line="44">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="45">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Titulo&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span data-line="46">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Autor&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span data-line="47">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Paginas Leidas&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span><span data-line="48">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Paginas totales&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</span><span data-line="49">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Porcentaje leido&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span data-line="50">        
+</span><span data-line="51">        <span class="n">layout</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tabla</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="52">        <span class="n">layout</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">box_botones</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="53">        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+</span><span data-line="54">        <span class="bp">self</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+</span><span data-line="55">
+<div class="viewcode-block" id="Ventana.agregar_columna">
+<a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.agregar_columna">[documentos]</a>
+</span><span data-line="56">    <span class="k">def</span><span class="w"> </span><span class="nf">agregar_columna</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">titulo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">indice</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span data-line="57"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="58">
+</span><span data-line="59"><span class="sd">        Abstrae la agregacion de una columna a la tabla para no tener que ir creando el renderer y la columna de forma manual</span>
+</span><span data-line="60">
+</span><span data-line="61"><span class="sd">        :param titulo: El titulo de la columna</span>
+</span><span data-line="62"><span class="sd">        :type titulo: str</span>
+</span><span data-line="63"><span class="sd">        :param indice: El indice de la columna</span>
+</span><span data-line="64"><span class="sd">        :type indice: int</span>
+</span><span data-line="65">
+</span><span data-line="66"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="67">        <span class="n">renderer</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">CellRendererText</span><span class="p">()</span>
+</span><span data-line="68">        <span class="n">columna</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">TreeViewColumn</span><span class="p">(</span><span class="n">titulo</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">indice</span><span class="p">)</span>
+</span><span data-line="69">        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tabla</span><span class="o">.</span><span class="n">append_column</span><span class="p">(</span><span class="n">columna</span><span class="p">)</span></div>
+
+</span><span data-line="70">
+<div class="viewcode-block" id="Ventana.mostrar_formulario_anadir">
+<a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.mostrar_formulario_anadir">[documentos]</a>
+</span><span data-line="71">    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_formulario_anadir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_button</span><span class="p">:</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="p">,</span> <span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span><span class="p">):</span>
+</span><span data-line="72">        <span class="n">formulario_anadir</span> <span class="o">=</span> <span class="n">Formulario</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+</span><span data-line="73">        <span class="n">formulario_anadir</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span></div>
+
+</span><span data-line="74">
+<div class="viewcode-block" id="Ventana.mostrar_formulario_autor">
+<a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.mostrar_formulario_autor">[documentos]</a>
+</span><span data-line="75">    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_formulario_autor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_button</span><span class="p">:</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="p">,</span> <span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span><span class="p">):</span>
+</span><span data-line="76">        <span class="n">formulario_autor</span> <span class="o">=</span> <span class="n">FormularioAutores</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+</span><span data-line="77">        <span class="n">formulario_autor</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span></div>
+
+</span><span data-line="78">
+<div class="viewcode-block" id="Ventana.anadir_valores_bd">
+<a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.anadir_valores_bd">[documentos]</a>
+</span><span data-line="79">    <span class="k">def</span><span class="w"> </span><span class="nf">anadir_valores_bd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="80"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="81">
+</span><span data-line="82"><span class="sd">        Añade valores de la base de datos en la tabla que usa la aplicacion visualmente</span>
+</span><span data-line="83"><span class="sd">        :param modelo: El modelo de datos usado por GTK</span>
+</span><span data-line="84"><span class="sd">        :type modelo: Gtk.ListStore</span>
+</span><span data-line="85">
+</span><span data-line="86"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="87">        <span class="n">libros</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">obtener_todos_libros</span><span class="p">()</span>
+</span><span data-line="88">        <span class="k">for</span> <span class="n">libro</span> <span class="ow">in</span> <span class="n">libros</span><span class="p">:</span>
+</span><span data-line="89">                <span class="bp">self</span><span class="o">.</span><span class="n">modelo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+</span><span data-line="90">                    <span class="p">[</span>
+</span><span data-line="91">                        <span class="n">libro</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</span><span data-line="92">                        <span class="n">libro</span><span class="o">.</span><span class="n">titulo</span><span class="p">,</span>
+</span><span data-line="93">                        <span class="nb">str</span><span class="p">(</span><span class="n">libro</span><span class="o">.</span><span class="n">autor</span><span class="p">),</span>
+</span><span data-line="94">                        <span class="n">libro</span><span class="o">.</span><span class="n">paginas_leidas</span><span class="p">,</span>
+</span><span data-line="95">                        <span class="n">libro</span><span class="o">.</span><span class="n">paginas_totales</span><span class="p">,</span>
+</span><span data-line="96">                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">libro</span><span class="o">.</span><span class="n">porcentaje_leido</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span>
+</span><span data-line="97">                    <span class="p">]</span>
+</span><span data-line="98">                <span class="p">)</span></div>
+</div>
+
+</span><span data-line="99">
+</span><span data-line="100">
+<div class="viewcode-block" id="iniciar_ventana">
+<a class="viewcode-back" href="../../src.html#src.ventana_principal.iniciar_ventana">[documentos]</a>
+</span><span data-line="101"><span class="k">def</span><span class="w"> </span><span class="nf">iniciar_ventana</span><span class="p">(</span><span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span><span class="p">):</span>
+</span><span data-line="102"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="103">
+</span><span data-line="104"><span class="sd">    Incia la ventana principal, de la aplicacion</span>
+</span><span data-line="105"><span class="sd">    :param controller: El controlador de la base de datos</span>
+</span><span data-line="106"><span class="sd">    :type: Controller</span>
+</span><span data-line="107">
+</span><span data-line="108"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="109">    <span class="n">Ventana</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
+</span><span data-line="110">    <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span></div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Reen al supro</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, Oscar Rodriguez</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=e2bb6099"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/translations.js?v=f85f4cfb"></script>
+      <script src="../../_static/shibuya.js?v=cac61aee"></script></body>
+</html>

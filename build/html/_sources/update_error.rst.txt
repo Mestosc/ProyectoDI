@@ -1,0 +1,7 @@
+update\_error module
+====================
+
+.. automodule:: update_error
+   :members:
+   :show-inheritance:
+   :undoc-members:

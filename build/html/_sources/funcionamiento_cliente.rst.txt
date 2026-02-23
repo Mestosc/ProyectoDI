@@ -1,0 +1,6 @@
+Interfaz
+======================
+
+Aquí se describe como es la interfaz a la que accede al cliente con imágenes
+
+En la interfaz principal hay una vista en la cual aparecen los libros con el % leído de cada uno 

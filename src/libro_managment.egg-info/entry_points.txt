@@ -1,0 +1,2 @@
+[console_scripts]
+libro_managment = main:main

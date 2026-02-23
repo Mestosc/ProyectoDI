@@ -1,0 +1,7 @@
+ventana\_principal module
+=========================
+
+.. automodule:: ventana_principal
+   :members:
+   :show-inheritance:
+   :undoc-members:
