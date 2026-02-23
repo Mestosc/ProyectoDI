@@ -56,6 +56,7 @@ data-aria-dark="Cambiar a modo aŭtomata">
       <div class="sy-scrollbar p-6">
         <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contenidos:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../funcionamiento_usuario.html">Guía de Funcionamiento para el Usuario</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../src.html">src package</a></li>
 </ul>
@@ -145,93 +146,149 @@ data-aria-dark="Cambiar a modo aŭtomata">
 </span><span data-line="36">        
 </span><span data-line="37">        <span class="n">boton_autor</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_with_mnemonic</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Añadir nuevo _autor&quot;</span><span class="p">)</span>
 </span><span data-line="38">        <span class="n">_</span> <span class="o">=</span> <span class="n">boton_autor</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;clicked&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mostrar_formulario_autor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="p">)</span>
-</span><span data-line="39">        
-</span><span data-line="40">        <span class="n">box_botones</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">boton_libro</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span data-line="41">        <span class="n">box_botones</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">boton_autor</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="39">
+</span><span data-line="40">        <span class="n">boton_editar</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_with_mnemonic</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;_Editar seleccionado&quot;</span><span class="p">)</span>
+</span><span data-line="41">        <span class="n">_</span> <span class="o">=</span> <span class="n">boton_editar</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;clicked&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_editar_clicked</span><span class="p">)</span>
 </span><span data-line="42">
-</span><span data-line="43">        <span class="bp">self</span><span class="o">.</span><span class="n">tabla</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">TreeView</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">modelo</span><span class="p">)</span>
-</span><span data-line="44">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span data-line="45">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Titulo&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</span><span data-line="46">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Autor&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</span><span data-line="47">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Paginas Leidas&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</span><span data-line="48">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Paginas totales&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-</span><span data-line="49">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Porcentaje leido&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</span><span data-line="50">        
-</span><span data-line="51">        <span class="n">layout</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tabla</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span data-line="52">        <span class="n">layout</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">box_botones</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span data-line="53">        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
-</span><span data-line="54">        <span class="bp">self</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
-</span><span data-line="55">
+</span><span data-line="43">        <span class="n">boton_eliminar</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="o">.</span><span class="n">new_with_mnemonic</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;E_liminar seleccionado&quot;</span><span class="p">)</span>
+</span><span data-line="44">        <span class="n">_</span> <span class="o">=</span> <span class="n">boton_eliminar</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;clicked&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_eliminar_clicked</span><span class="p">)</span>
+</span><span data-line="45">        
+</span><span data-line="46">        <span class="n">box_botones</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">boton_libro</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="47">        <span class="n">box_botones</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">boton_autor</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="48">        <span class="n">box_botones</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">boton_editar</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="49">        <span class="n">box_botones</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">boton_eliminar</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="50">
+</span><span data-line="51">        <span class="bp">self</span><span class="o">.</span><span class="n">tabla</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">TreeView</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">modelo</span><span class="p">)</span>
+</span><span data-line="52">        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tabla</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;row-activated&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_row_activated</span><span class="p">)</span>
+</span><span data-line="53">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="54">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Titulo&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span data-line="55">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Autor&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span><span data-line="56">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Paginas Leidas&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span><span data-line="57">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Paginas totales&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</span><span data-line="58">        <span class="bp">self</span><span class="o">.</span><span class="n">agregar_columna</span><span class="p">(</span><span class="s2">&quot;Porcentaje leido&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span data-line="59">        
+</span><span data-line="60">        <span class="n">layout</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tabla</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="61">        <span class="n">layout</span><span class="o">.</span><span class="n">pack_start</span><span class="p">(</span><span class="n">box_botones</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="62">        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+</span><span data-line="63">        <span class="bp">self</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span>
+</span><span data-line="64">
 <div class="viewcode-block" id="Ventana.agregar_columna">
 <a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.agregar_columna">[documentos]</a>
-</span><span data-line="56">    <span class="k">def</span><span class="w"> </span><span class="nf">agregar_columna</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">titulo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">indice</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-</span><span data-line="57"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="58">
-</span><span data-line="59"><span class="sd">        Abstrae la agregacion de una columna a la tabla para no tener que ir creando el renderer y la columna de forma manual</span>
-</span><span data-line="60">
-</span><span data-line="61"><span class="sd">        :param titulo: El titulo de la columna</span>
-</span><span data-line="62"><span class="sd">        :type titulo: str</span>
-</span><span data-line="63"><span class="sd">        :param indice: El indice de la columna</span>
-</span><span data-line="64"><span class="sd">        :type indice: int</span>
-</span><span data-line="65">
-</span><span data-line="66"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="67">        <span class="n">renderer</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">CellRendererText</span><span class="p">()</span>
-</span><span data-line="68">        <span class="n">columna</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">TreeViewColumn</span><span class="p">(</span><span class="n">titulo</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">indice</span><span class="p">)</span>
-</span><span data-line="69">        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tabla</span><span class="o">.</span><span class="n">append_column</span><span class="p">(</span><span class="n">columna</span><span class="p">)</span></div>
+</span><span data-line="65">    <span class="k">def</span><span class="w"> </span><span class="nf">agregar_columna</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">titulo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">indice</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span data-line="66"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="67">
+</span><span data-line="68"><span class="sd">        Abstrae la agregacion de una columna a la tabla para no tener que ir creando el renderer y la columna de forma manual</span>
+</span><span data-line="69">
+</span><span data-line="70"><span class="sd">        :param titulo: El titulo de la columna</span>
+</span><span data-line="71"><span class="sd">        :type titulo: str</span>
+</span><span data-line="72"><span class="sd">        :param indice: El indice de la columna</span>
+</span><span data-line="73"><span class="sd">        :type indice: int</span>
+</span><span data-line="74">
+</span><span data-line="75"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="76">        <span class="n">renderer</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">CellRendererText</span><span class="p">()</span>
+</span><span data-line="77">        <span class="n">columna</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">TreeViewColumn</span><span class="p">(</span><span class="n">titulo</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">indice</span><span class="p">)</span>
+</span><span data-line="78">        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tabla</span><span class="o">.</span><span class="n">append_column</span><span class="p">(</span><span class="n">columna</span><span class="p">)</span></div>
 
-</span><span data-line="70">
+</span><span data-line="79">
 <div class="viewcode-block" id="Ventana.mostrar_formulario_anadir">
 <a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.mostrar_formulario_anadir">[documentos]</a>
-</span><span data-line="71">    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_formulario_anadir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_button</span><span class="p">:</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="p">,</span> <span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span><span class="p">):</span>
-</span><span data-line="72">        <span class="n">formulario_anadir</span> <span class="o">=</span> <span class="n">Formulario</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-</span><span data-line="73">        <span class="n">formulario_anadir</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span></div>
+</span><span data-line="80">    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_formulario_anadir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_button</span><span class="p">:</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="p">,</span> <span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span><span class="p">):</span>
+</span><span data-line="81">        <span class="n">formulario_anadir</span> <span class="o">=</span> <span class="n">Formulario</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+</span><span data-line="82">        <span class="n">formulario_anadir</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span></div>
 
-</span><span data-line="74">
+</span><span data-line="83">
 <div class="viewcode-block" id="Ventana.mostrar_formulario_autor">
 <a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.mostrar_formulario_autor">[documentos]</a>
-</span><span data-line="75">    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_formulario_autor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_button</span><span class="p">:</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="p">,</span> <span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span><span class="p">):</span>
-</span><span data-line="76">        <span class="n">formulario_autor</span> <span class="o">=</span> <span class="n">FormularioAutores</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-</span><span data-line="77">        <span class="n">formulario_autor</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span></div>
+</span><span data-line="84">    <span class="k">def</span><span class="w"> </span><span class="nf">mostrar_formulario_autor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_button</span><span class="p">:</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">Button</span><span class="p">,</span> <span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span><span class="p">):</span>
+</span><span data-line="85">        <span class="n">formulario_autor</span> <span class="o">=</span> <span class="n">FormularioAutores</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+</span><span data-line="86">        <span class="n">formulario_autor</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span></div>
 
-</span><span data-line="78">
+</span><span data-line="87">
+<div class="viewcode-block" id="Ventana.get_libro_seleccionado">
+<a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.get_libro_seleccionado">[documentos]</a>
+</span><span data-line="88">    <span class="k">def</span><span class="w"> </span><span class="nf">get_libro_seleccionado</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="89">        <span class="n">seleccion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tabla</span><span class="o">.</span><span class="n">get_selection</span><span class="p">()</span>
+</span><span data-line="90">        <span class="n">modelo</span><span class="p">,</span> <span class="n">iterador</span> <span class="o">=</span> <span class="n">seleccion</span><span class="o">.</span><span class="n">get_selected</span><span class="p">()</span>
+</span><span data-line="91">        <span class="k">if</span> <span class="n">iterador</span><span class="p">:</span>
+</span><span data-line="92">            <span class="n">libro_id</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">iterador</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="93">            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">obtener_libro</span><span class="p">(</span><span class="n">libro_id</span><span class="p">)</span>
+</span><span data-line="94">        <span class="k">return</span> <span class="kc">None</span></div>
+
+</span><span data-line="95">
+<div class="viewcode-block" id="Ventana.on_editar_clicked">
+<a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.on_editar_clicked">[documentos]</a>
+</span><span data-line="96">    <span class="k">def</span><span class="w"> </span><span class="nf">on_editar_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_button</span><span class="p">):</span>
+</span><span data-line="97">        <span class="n">libro</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_libro_seleccionado</span><span class="p">()</span>
+</span><span data-line="98">        <span class="k">if</span> <span class="n">libro</span><span class="p">:</span>
+</span><span data-line="99">            <span class="n">formulario</span> <span class="o">=</span> <span class="n">Formulario</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">libro</span><span class="p">)</span>
+</span><span data-line="100">            <span class="n">formulario</span><span class="o">.</span><span class="n">show_all</span><span class="p">()</span></div>
+
+</span><span data-line="101">
+<div class="viewcode-block" id="Ventana.on_eliminar_clicked">
+<a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.on_eliminar_clicked">[documentos]</a>
+</span><span data-line="102">    <span class="k">def</span><span class="w"> </span><span class="nf">on_eliminar_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_button</span><span class="p">):</span>
+</span><span data-line="103">        <span class="n">libro</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_libro_seleccionado</span><span class="p">()</span>
+</span><span data-line="104">        <span class="k">if</span> <span class="n">libro</span><span class="p">:</span>
+</span><span data-line="105">            <span class="c1"># Diálogo de confirmación simple</span>
+</span><span data-line="106">            <span class="n">dialogo</span> <span class="o">=</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span>
+</span><span data-line="107">                <span class="n">transient_for</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+</span><span data-line="108">                <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span data-line="109">                <span class="n">message_type</span><span class="o">=</span><span class="n">Gtk</span><span class="o">.</span><span class="n">MessageType</span><span class="o">.</span><span class="n">QUESTION</span><span class="p">,</span>
+</span><span data-line="110">                <span class="n">buttons</span><span class="o">=</span><span class="n">Gtk</span><span class="o">.</span><span class="n">ButtonsType</span><span class="o">.</span><span class="n">YES_NO</span><span class="p">,</span>
+</span><span data-line="111">                <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;¿Estás seguro de que quieres eliminar &#39;</span><span class="si">{</span><span class="n">libro</span><span class="o">.</span><span class="n">titulo</span><span class="si">}</span><span class="s2">&#39;?&quot;</span><span class="p">,</span>
+</span><span data-line="112">            <span class="p">)</span>
+</span><span data-line="113">            <span class="n">respuesta</span> <span class="o">=</span> <span class="n">dialogo</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span><span data-line="114">            <span class="k">if</span> <span class="n">respuesta</span> <span class="o">==</span> <span class="n">Gtk</span><span class="o">.</span><span class="n">ResponseType</span><span class="o">.</span><span class="n">YES</span><span class="p">:</span>
+</span><span data-line="115">                <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">eliminar_libro</span><span class="p">(</span><span class="n">libro</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</span><span data-line="116">                <span class="bp">self</span><span class="o">.</span><span class="n">modelo</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</span><span data-line="117">                <span class="bp">self</span><span class="o">.</span><span class="n">anadir_valores_bd</span><span class="p">()</span>
+</span><span data-line="118">            <span class="n">dialogo</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span></div>
+
+</span><span data-line="119">
+<div class="viewcode-block" id="Ventana.on_row_activated">
+<a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.on_row_activated">[documentos]</a>
+</span><span data-line="120">    <span class="k">def</span><span class="w"> </span><span class="nf">on_row_activated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_treeview</span><span class="p">,</span> <span class="n">_path</span><span class="p">,</span> <span class="n">_column</span><span class="p">):</span>
+</span><span data-line="121">        <span class="bp">self</span><span class="o">.</span><span class="n">on_editar_clicked</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span></div>
+
+</span><span data-line="122">
 <div class="viewcode-block" id="Ventana.anadir_valores_bd">
 <a class="viewcode-back" href="../../src.html#src.ventana_principal.Ventana.anadir_valores_bd">[documentos]</a>
-</span><span data-line="79">    <span class="k">def</span><span class="w"> </span><span class="nf">anadir_valores_bd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span data-line="80"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="81">
-</span><span data-line="82"><span class="sd">        Añade valores de la base de datos en la tabla que usa la aplicacion visualmente</span>
-</span><span data-line="83"><span class="sd">        :param modelo: El modelo de datos usado por GTK</span>
-</span><span data-line="84"><span class="sd">        :type modelo: Gtk.ListStore</span>
-</span><span data-line="85">
-</span><span data-line="86"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="87">        <span class="n">libros</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">obtener_todos_libros</span><span class="p">()</span>
-</span><span data-line="88">        <span class="k">for</span> <span class="n">libro</span> <span class="ow">in</span> <span class="n">libros</span><span class="p">:</span>
-</span><span data-line="89">                <span class="bp">self</span><span class="o">.</span><span class="n">modelo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-</span><span data-line="90">                    <span class="p">[</span>
-</span><span data-line="91">                        <span class="n">libro</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-</span><span data-line="92">                        <span class="n">libro</span><span class="o">.</span><span class="n">titulo</span><span class="p">,</span>
-</span><span data-line="93">                        <span class="nb">str</span><span class="p">(</span><span class="n">libro</span><span class="o">.</span><span class="n">autor</span><span class="p">),</span>
-</span><span data-line="94">                        <span class="n">libro</span><span class="o">.</span><span class="n">paginas_leidas</span><span class="p">,</span>
-</span><span data-line="95">                        <span class="n">libro</span><span class="o">.</span><span class="n">paginas_totales</span><span class="p">,</span>
-</span><span data-line="96">                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">libro</span><span class="o">.</span><span class="n">porcentaje_leido</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span>
-</span><span data-line="97">                    <span class="p">]</span>
-</span><span data-line="98">                <span class="p">)</span></div>
+</span><span data-line="123">    <span class="k">def</span><span class="w"> </span><span class="nf">anadir_valores_bd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="124"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="125">
+</span><span data-line="126"><span class="sd">        Añade valores de la base de datos en la tabla que usa la aplicacion visualmente</span>
+</span><span data-line="127"><span class="sd">        :param modelo: El modelo de datos usado por GTK</span>
+</span><span data-line="128"><span class="sd">        :type modelo: Gtk.ListStore</span>
+</span><span data-line="129">
+</span><span data-line="130"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="131">        <span class="n">libros</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">obtener_todos_libros</span><span class="p">()</span>
+</span><span data-line="132">        <span class="k">for</span> <span class="n">libro</span> <span class="ow">in</span> <span class="n">libros</span><span class="p">:</span>
+</span><span data-line="133">                <span class="bp">self</span><span class="o">.</span><span class="n">modelo</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+</span><span data-line="134">                    <span class="p">[</span>
+</span><span data-line="135">                        <span class="n">libro</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</span><span data-line="136">                        <span class="n">libro</span><span class="o">.</span><span class="n">titulo</span><span class="p">,</span>
+</span><span data-line="137">                        <span class="nb">str</span><span class="p">(</span><span class="n">libro</span><span class="o">.</span><span class="n">autor</span><span class="p">),</span>
+</span><span data-line="138">                        <span class="n">libro</span><span class="o">.</span><span class="n">paginas_leidas</span><span class="p">,</span>
+</span><span data-line="139">                        <span class="n">libro</span><span class="o">.</span><span class="n">paginas_totales</span><span class="p">,</span>
+</span><span data-line="140">                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">libro</span><span class="o">.</span><span class="n">porcentaje_leido</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span>
+</span><span data-line="141">                    <span class="p">]</span>
+</span><span data-line="142">                <span class="p">)</span></div>
 </div>
 
-</span><span data-line="99">
-</span><span data-line="100">
+</span><span data-line="143">
+</span><span data-line="144">
 <div class="viewcode-block" id="iniciar_ventana">
 <a class="viewcode-back" href="../../src.html#src.ventana_principal.iniciar_ventana">[documentos]</a>
-</span><span data-line="101"><span class="k">def</span><span class="w"> </span><span class="nf">iniciar_ventana</span><span class="p">(</span><span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span><span class="p">):</span>
-</span><span data-line="102"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="103">
-</span><span data-line="104"><span class="sd">    Incia la ventana principal, de la aplicacion</span>
-</span><span data-line="105"><span class="sd">    :param controller: El controlador de la base de datos</span>
-</span><span data-line="106"><span class="sd">    :type: Controller</span>
-</span><span data-line="107">
-</span><span data-line="108"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="109">    <span class="n">Ventana</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
-</span><span data-line="110">    <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span></div>
+</span><span data-line="145"><span class="k">def</span><span class="w"> </span><span class="nf">iniciar_ventana</span><span class="p">(</span><span class="n">controller</span><span class="p">:</span> <span class="n">Controller</span><span class="p">):</span>
+</span><span data-line="146"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="147">
+</span><span data-line="148"><span class="sd">    Incia la ventana principal, de la aplicacion</span>
+</span><span data-line="149"><span class="sd">    :param controller: El controlador de la base de datos</span>
+</span><span data-line="150"><span class="sd">    :type: Controller</span>
+</span><span data-line="151">
+</span><span data-line="152"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="153">    <span class="n">Ventana</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
+</span><span data-line="154">    <span class="n">Gtk</span><span class="o">.</span><span class="n">main</span><span class="p">()</span></div>
 
 </span></pre></div>
         </article><button class="back-to-top" type="button">

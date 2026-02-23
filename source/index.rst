@@ -12,5 +12,6 @@ Este proyecto es un sistema para rastrear lecturas de libros que alamacena los l
 .. toctree::
    :maxdepth: 2
    :caption: Contenidos:
-   
+
+   funcionamiento_usuario
    modules
