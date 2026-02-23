@@ -1,22 +1,34 @@
 import sqlite3
-from dataclasses import asdict
 from sqlite3 import Connection
 
 from libro import Libro, Autor
 from update_error import UpdateError
 
 
+import os
+from pathlib import Path
+
 class Controller:
-    def __init__(self, database: str = "../libros.db"):
+    def __init__(self, database: str | None = None):
         """
         Inicializa el controlador. El uso de la base de datos se gestiona
         mediante gestores de contexto para asegurar la integridad.
 
-        :param database: Nombre del archivo de la base de datos.
-        :type database: str
+        Si no se proporciona un nombre de base de datos, se usa un archivo 
+        en la carpeta de datos del usuario.
 
+        :param database: Nombre del archivo de la base de datos o None para usar el predeterminado.
+        :type database: str | None
         """
-        self.database: str = database
+        if database is None:
+            # Usar una carpeta en el directorio del usuario para asegurar persistencia y permisos
+            home_dir = Path.home()
+            data_dir = home_dir / ".libro_managment"
+            data_dir.mkdir(parents=True, exist_ok=True)
+            self.database = str(data_dir / "libros.db")
+        else:
+            self.database = database
+
         self._inicializar_db()
 
     def _conexion(self) -> Connection:
