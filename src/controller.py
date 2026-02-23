@@ -29,76 +29,32 @@ class Controller:
 
     def _inicializar_db(self):
         """
-
-        Inicializa el esquema si es necesario, manejando la migración a autores.
-
+        Inicializa el esquema de la base de datos creando las tablas de autores y libros si no existen.
         """
         try:
             with self._conexion() as conn:
                 conn.row_factory = sqlite3.Row
                 cursor = conn.cursor()
-                # Create autores table
-                _ = cursor.execute("""
+                
+                # Crear tabla de autores
+                cursor.execute("""
                     CREATE TABLE IF NOT EXISTS autores (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         nombre TEXT NOT NULL UNIQUE
                     )
                 """)
 
-                # Check if libros table exists and its structure
-                _ = cursor.execute(
-                    "SELECT sql FROM sqlite_master WHERE type='table' AND name='libros'"
-                )
-                row = cursor.fetchone()
-                if not row:
-                    _ = cursor.execute("""
-                        CREATE TABLE libros (
-                            id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            titulo TEXT NOT NULL,
-                            autor_id INTEGER NOT NULL,
-                            paginas_leidas INTEGER DEFAULT 0,
-                            paginas_totales INTEGER DEFAULT 0,
-                            FOREIGN KEY (autor_id) REFERENCES autores(id)
-                        )
-                    """)
-                elif "autor_id" not in row["sql"].lower():
-                    # Migration: Change autor (TEXT) to autor_id (INTEGER)
-                    print("Migrando base de datos a nuevo esquema...")
-                    # 1. Get unique authors and insert into autores
-                    _ = cursor.execute("SELECT DISTINCT autor FROM libros")
-                    autores_antiguos = [r[0] for r in cursor.fetchall()]
-                    for autor in autores_antiguos:
-                        if autor is None:
-                            autor = "Desconocido"
-                        _ = cursor.execute(
-                            "INSERT OR IGNORE INTO autores (nombre) VALUES (?)",
-                            (autor,),
-                        )
-
-                    # 2. Create temporary table with new schema
-                    _ = cursor.execute("""
-                        CREATE TABLE libros_nuevo (
-                            id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            titulo TEXT NOT NULL,
-                            autor_id INTEGER NOT NULL,
-                            paginas_leidas INTEGER DEFAULT 0,
-                            paginas_totales INTEGER DEFAULT 0,
-                            FOREIGN KEY (autor_id) REFERENCES autores(id)
-                        )
-                    """)
-
-                    # 3. Copy data mapping authors to IDs
-                    _ = cursor.execute("""
-                        INSERT INTO libros_nuevo (id, titulo, autor_id, paginas_leidas, paginas_totales)
-                        SELECT l.id, l.titulo, a.id, l.paginas_leidas, l.paginas_totales
-                        FROM libros l
-                        JOIN autores a ON COALESCE(l.autor, 'Desconocido') = a.nombre
-                    """)
-
-                    # 4. Swap tables
-                    _ = cursor.execute("DROP TABLE libros")
-                    _ = cursor.execute("ALTER TABLE libros_nuevo RENAME TO libros")
-                    print("Migración completada.")
+                # Crear tabla de libros
+                cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS libros (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        titulo TEXT NOT NULL,
+                        autor_id INTEGER NOT NULL,
+                        paginas_leidas INTEGER DEFAULT 0,
+                        paginas_totales INTEGER DEFAULT 0,
+                        FOREIGN KEY (autor_id) REFERENCES autores(id)
+                    )
+                """)
         except sqlite3.Error as e:
             print(f"Error crítico al inicializar la base de datos: {e}")
 
@@ -309,5 +265,18 @@ class Controller:
                 return True
         except sqlite3.Error as e:
             print(f"Error al actualizar el libro {libro.id}: {e}")
+            return False
+
+    def eliminar_libro(self, bd_id: int) -> bool:
+        """
+        Elimina un libro de la base de datos por su ID.
+        """
+        try:
+            with self._conexion() as conn:
+                cursor = conn.cursor()
+                cursor.execute("DELETE FROM libros WHERE id = ?", (bd_id,))
+                return True
+        except sqlite3.Error as e:
+            print(f"Error al eliminar el libro {bd_id}: {e}")
             return False
 

@@ -1,0 +1,21 @@
+[project]
+name = "libro-managment"
+version = "0.0.1"
+authors = [
+  {name="Oscar Rodriguez", email="orodriguezcabaleiro@danielcastelao.org" }
+]
+description = "Una utilidad para gestionar libros y sus autores de forma "
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+  "Programming Language :: Python ::3",
+  "Operating System :: OS Independent"
+]
+license = "MIT"
+license-files = ["LICENSE"]
+
+[project.urls]
+Homepage = "https://github.com/Mestosc"
+
+[project.scripts]
+lanzador = "src.main:main"

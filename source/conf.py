@@ -7,7 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import os
 import sys
-sys.path.insert(0,os.path.abspath("../src"))
+sys.path.insert(0, os.path.abspath(".."))
+sys.path.insert(0, os.path.abspath("../src"))
 project = "Proyecto GTK DI"
 copyright = "2026, Oscar Rodriguez"
 author = "Oscar Rodriguez"
@@ -15,10 +16,14 @@ author = "Oscar Rodriguez"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.viewcode',
+]
 
 templates_path = ["_templates"]
-exclude_patterns = [ 'sphinx.ext.autodoc' ]
+exclude_patterns = []
 
 language = "es"
 

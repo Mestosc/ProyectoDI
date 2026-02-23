@@ -66,38 +66,46 @@ class FormularioAutores(Gtk.Window):
 class Formulario(Gtk.Window):
     ventana_padre: "Ventana"
 
-    def __init__(self, controller: Controller, ventana_padre: "Ventana"):
-        super().__init__(title="Añadir nuevo libro")
+    def __init__(self, controller: Controller, ventana_padre: "Ventana", libro: Libro = None):
+        self.libro_a_editar = libro
+        titulo_ventana = "Editar libro" if libro else "Añadir nuevo libro"
+        super().__init__(title=titulo_ventana)
         self.controller: Controller = controller
         self.ventana_padre = ventana_padre
         layout = Gtk.Grid()
+        layout.set_column_spacing(10)
+        layout.set_row_spacing(10)
+        layout.set_border_width(10)
+
         etiqueta_titulo = Gtk.Label(label="Titulo")
-        self.titulo: Gtk.Entry = Gtk.Entry(placeholder_text="Absurdeces del mundo")
-        self.titulo.set_hexpand(
-            True
-        )  # Esto hace que el Entry use todo el espacio horizontal disponible
-        layout.attach(etiqueta_titulo, 0, 0, 1, 1)  # Columna 0, Fila 0
-        layout.attach_next_to(
-            self.titulo, etiqueta_titulo, Gtk.PositionType.RIGHT, 1, 1
-        )
+        self.titulo: Gtk.Entry = Gtk.Entry()
+        self.titulo.set_hexpand(True)
+        if libro:
+            self.titulo.set_text(libro.titulo)
+        
+        layout.attach(etiqueta_titulo, 0, 0, 1, 1)
+        layout.attach_next_to(self.titulo, etiqueta_titulo, Gtk.PositionType.RIGHT, 1, 1)
+
         paginas_leidas_label = Gtk.Label(label="Paginas Leidas")
-        self.paginas_leidas: Gtk.Entry = Gtk.Entry(placeholder_text="0")
-        layout.attach_next_to(
-            paginas_leidas_label, etiqueta_titulo, Gtk.PositionType.BOTTOM, 1, 1
-        )
-        layout.attach_next_to(
-            self.paginas_leidas, paginas_leidas_label, Gtk.PositionType.RIGHT, 1, 1
-        )
+        self.paginas_leidas: Gtk.Entry = Gtk.Entry()
+        if libro:
+            self.paginas_leidas.set_text(str(libro.paginas_leidas))
+        
+        layout.attach_next_to(paginas_leidas_label, etiqueta_titulo, Gtk.PositionType.BOTTOM, 1, 1)
+        layout.attach_next_to(self.paginas_leidas, paginas_leidas_label, Gtk.PositionType.RIGHT, 1, 1)
+
         paginas_totales_label = Gtk.Label(label="Paginas Totales")
-        self.paginas_totales: Gtk.Entry = Gtk.Entry(placeholder_text="0")
-        layout.attach_next_to(
-            paginas_totales_label, paginas_leidas_label, Gtk.PositionType.BOTTOM, 1, 1
-        )
-        layout.attach_next_to(
-            self.paginas_totales, paginas_totales_label, Gtk.PositionType.RIGHT, 1, 1
-        )
+        self.paginas_totales: Gtk.Entry = Gtk.Entry()
+        if libro:
+            self.paginas_totales.set_text(str(libro.paginas_totales))
+        
+        layout.attach_next_to(paginas_totales_label, paginas_leidas_label, Gtk.PositionType.BOTTOM, 1, 1)
+        layout.attach_next_to(self.paginas_totales, paginas_totales_label, Gtk.PositionType.RIGHT, 1, 1)
+
         autor_label: Gtk.Label = Gtk.Label(label="Autor")
         self.autor: Gtk.Entry = Gtk.Entry(placeholder_text="Nombre o ID del autor")
+        if libro and libro.autor:
+            self.autor.set_text(libro.autor.nombre)
         
         # Completado de entrada para autores
         completado = Gtk.EntryCompletion()
@@ -107,70 +115,54 @@ class Formulario(Gtk.Window):
             modelo_autores.append([str(a.id), a.nombre])
         
         completado.set_model(modelo_autores)
-        completado.set_text_column(1) # Muestra el nombre por defecto al sugerir
-        # Permite buscar en ID o Nombre
+        completado.set_text_column(1)
         completado.set_match_func(lambda completion, key, iter: 
                                   key.lower() in modelo_autores[iter][0].lower() or 
                                   key.lower() in modelo_autores[iter][1].lower())
         
         self.autor.set_completion(completado)
 
-        layout.attach_next_to(
-            autor_label, paginas_totales_label, Gtk.PositionType.BOTTOM, 1, 1
-        )
+        layout.attach_next_to(autor_label, paginas_totales_label, Gtk.PositionType.BOTTOM, 1, 1)
         layout.attach_next_to(self.autor, autor_label, Gtk.PositionType.RIGHT, 1, 1)
-        boton = Gtk.Button.new_with_mnemonic("_Añadir libro")
-        _ = boton.connect("clicked", self.anadir_libro)
+
+        texto_boton = "_Actualizar libro" if libro else "_Añadir libro"
+        boton = Gtk.Button.new_with_mnemonic(texto_boton)
+        _ = boton.connect("clicked", self.guardar_datos)
         layout.attach(boton, 0, 4, 2, 1)
         super().add(layout)
 
-    def anadir_libro(self, button: Gtk.Button):
+    def guardar_datos(self, button: Gtk.Button):
         """
-
-        Añadir un libro, a la base de datos y refrescar el modelo que representa la tabla en mi aplicacion, usando la informacion puesta en el forumulario si no se pone nada se emplean valores por defecto.
-
+        Guarda los datos del libro (inserta o actualiza).
         """
         try:
             p_leidas = int(self.paginas_leidas.get_text() or 0)
             p_totales = int(self.paginas_totales.get_text() or 0)
             
-            # Buscamos el autor por el texto de la entrada (nombre o ID)
             entrada_autor = self.autor.get_text().strip()
             if not entrada_autor:
-                 _ = subprocess.run(
-                    ["notify-send", "Debe introducir el nombre o ID de un autor"],
-                    check=False,
-                )
+                 _ = subprocess.run(["notify-send", "Debe introducir el nombre o ID de un autor"], check=False)
                  return
 
             autor = self.controller.buscar_autor(entrada_autor)
-            
             if not autor:
-                _ = subprocess.run(
-                    [
-                        "notify-send",
-                        f"El autor '{entrada_autor}' no existe. Por favor, use uno existente.",
-                    ],
-                    check=False,
-                )
+                _ = subprocess.run(["notify-send", f"El autor '{entrada_autor}' no existe."], check=False)
                 return
 
             titulo = self.titulo.get_text().strip() or ""
-            libro = Libro(
-                titulo=titulo,
-                paginas_leidas=p_leidas,
-                paginas_totales=p_totales,
-                autor=autor,
-            )
-            _ = self.controller.insertar_libro(libro)
+            
+            if self.libro_a_editar:
+                self.libro_a_editar.titulo = titulo
+                self.libro_a_editar.paginas_leidas = p_leidas
+                self.libro_a_editar.paginas_totales = p_totales
+                self.libro_a_editar.autor = autor
+                _ = self.controller.actualizar_libro(self.libro_a_editar)
+            else:
+                libro = Libro(titulo=titulo, paginas_leidas=p_leidas, paginas_totales=p_totales, autor=autor)
+                _ = self.controller.insertar_libro(libro)
+            
             self.ventana_padre.modelo.clear()
             self.ventana_padre.anadir_valores_bd()
             self.destroy()
         except ValueError:
-            _ = subprocess.run(
-                [
-                    "notify-send",
-                    "No se puede introducir un libro cuyas paginas leidas sean mayores que las paginas totales o cuyas paginas no sean enteras",
-                ],
-                check=False,
-            )
+            _ = subprocess.run(["notify-send", "Datos numéricos inválidos."], check=False)
