@@ -17,7 +17,7 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="Proyecto GTK DI Documentacion"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Proyecto GTK DI: Rastreador de Lectura de Libros"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -54,7 +54,7 @@ data-aria-dark="Cambiar a modo aŭtomata">
   <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
-        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contenidos:</span></p>
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Guías y Módulos:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="funcionamiento_usuario.html">Guía de Funcionamiento para el Usuario</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">src</a><ul>
@@ -72,7 +72,18 @@ data-aria-dark="Cambiar a modo aŭtomata">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>En esta página</h3><ul>
+<li><a class="reference internal" href="#">Proyecto GTK DI: Rastreador de Lectura de Libros</a><ul>
+<li><a class="reference internal" href="#descripcion-del-proyecto">Descripción del Proyecto</a></li>
+<li><a class="reference internal" href="#caracteristicas-principales">Características Principales</a></li>
+<li><a class="reference internal" href="#requisitos-e-instalacion">Requisitos e Instalación</a></li>
+<li><a class="reference internal" href="#uso-de-la-aplicacion">Uso de la Aplicación</a></li>
+<li><a class="reference internal" href="#tabla-de-contenidos">Tabla de Contenidos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-y-tablas">Indices y tablas</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6">
@@ -88,7 +99,7 @@ data-aria-dark="Cambiar a modo aŭtomata">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Proyecto GTK DI Documentacion</strong>
+        <strong itemprop="name">Proyecto GTK DI: Rastreador de Lectura de Libros</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -101,11 +112,56 @@ data-aria-dark="Cambiar a modo aŭtomata">
 </div><div class="flex flex-col break-words justify-between">
       <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
   <article class="yue" role="main">
-          <section id="proyecto-gtk-di-documentacion">
-<h1>Proyecto GTK DI Documentacion<a class="headerlink" href="#proyecto-gtk-di-documentacion" title="Link to this heading">¶</a></h1>
-<p>Este proyecto es un sistema para rastrear lecturas de libros que alamacena los libros por generos, y te permite guardar las paginas que hayas leido</p>
+          <section id="proyecto-gtk-di-rastreador-de-lectura-de-libros">
+<h1>Proyecto GTK DI: Rastreador de Lectura de Libros<a class="headerlink" href="#proyecto-gtk-di-rastreador-de-lectura-de-libros" title="Link to this heading">¶</a></h1>
+<p>Bienvenido a la documentación de <strong>Proyecto GTK DI</strong>, una aplicación de escritorio intuitiva diseñada para gestionar tu biblioteca personal y realizar un seguimiento detallado de tu progreso de lectura.</p>
+<section id="descripcion-del-proyecto">
+<h2>Descripción del Proyecto<a class="headerlink" href="#descripcion-del-proyecto" title="Link to this heading">¶</a></h2>
+<p>Este sistema permite a los usuarios organizar sus libros por géneros y registrar el avance diario de sus lecturas. La aplicación está construida utilizando <strong>Python</strong> y <strong>GTK</strong> (PyGObject), ofreciendo una interfaz gráfica moderna y funcional para sistemas Linux.</p>
+</section>
+<section id="caracteristicas-principales">
+<h2>Características Principales<a class="headerlink" href="#caracteristicas-principales" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Gestión Integral:</strong> Añade, edita y organiza tus libros fácilmente.</p></li>
+<li><p><strong>Control de Progreso:</strong> Registra el número de páginas leídas para visualizar tu avance en cada obra.</p></li>
+<li><p><strong>Base de Datos Local:</strong> Utiliza SQLite para almacenar toda la información de forma segura y eficiente en el archivo <code class="docutils literal notranslate"><span class="pre">libros.db</span></code>.</p></li>
+<li><p><strong>Interfaz GTK:</strong> Una experiencia de usuario nativa y fluida.</p></li>
+</ul>
+</section>
+<section id="requisitos-e-instalacion">
+<h2>Requisitos e Instalación<a class="headerlink" href="#requisitos-e-instalacion" title="Link to this heading">¶</a></h2>
+<p>Para ejecutar este proyecto, necesitarás tener instalado <strong>Python 3</strong> y las librerías de desarrollo de <strong>GTK</strong> (como <code class="docutils literal notranslate"><span class="pre">libgirepository1.0-dev</span></code> en Ubuntu/Debian).</p>
+<p>Sigue estos pasos para la instalación:</p>
+<ol class="arabic simple">
+<li><p><strong>Clonar el repositorio</strong> y acceder a la carpeta del proyecto.</p></li>
+<li><p><strong>Crear un entorno virtual</strong> (opcional):</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</span><span data-line="2"><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</span></pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>Instalar dependencias</strong>:</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</span></pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="uso-de-la-aplicacion">
+<h2>Uso de la Aplicación<a class="headerlink" href="#uso-de-la-aplicacion" title="Link to this heading">¶</a></h2>
+<p>Para iniciar el rastreador de lectura, simplemente ejecuta el script principal desde la raíz del proyecto:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">python<span class="w"> </span>src/main.py
+</span></pre></div>
+</div>
+</section>
+<section id="tabla-de-contenidos">
+<h2>Tabla de Contenidos<a class="headerlink" href="#tabla-de-contenidos" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Guías y Módulos:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="funcionamiento_usuario.html">Guía de Funcionamiento para el Usuario</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">src</a><ul>
@@ -114,6 +170,15 @@ data-aria-dark="Cambiar a modo aŭtomata">
 </li>
 </ul>
 </div>
+</section>
+</section>
+<section id="indices-y-tablas">
+<h1>Indices y tablas<a class="headerlink" href="#indices-y-tablas" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Índice de Módulos</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Búsqueda</span></a></p></li>
+</ul>
 </section>
 
         </article><button class="back-to-top" type="button">
