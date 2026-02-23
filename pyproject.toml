@@ -4,6 +4,9 @@ version = "0.0.1"
 authors = [
   {name="Oscar Rodriguez", email="orodriguezcabaleiro@danielcastelao.org" }
 ]
+dependencies = [
+  "PyGObject~=3.54.5"
+]
 description = "Una utilidad para gestionar libros y sus autores de forma "
 readme = "README.md"
 requires-python = ">=3.9"
@@ -17,5 +20,6 @@ license-files = ["LICENSE"]
 [project.urls]
 Homepage = "https://github.com/Mestosc"
 
+
 [project.scripts]
-lanzador = "src.main:main"
+libro_managment = "main:main"

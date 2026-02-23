@@ -78,7 +78,7 @@ class Formulario(Gtk.Window):
         layout.set_border_width(10)
 
         etiqueta_titulo = Gtk.Label(label="Titulo")
-        self.titulo: Gtk.Entry = Gtk.Entry()
+        self.titulo: Gtk.Entry = Gtk.Entry(placeholder_text="Extraño su hogar")
         self.titulo.set_hexpand(True)
         if libro:
             self.titulo.set_text(libro.titulo)
@@ -87,7 +87,7 @@ class Formulario(Gtk.Window):
         layout.attach_next_to(self.titulo, etiqueta_titulo, Gtk.PositionType.RIGHT, 1, 1)
 
         paginas_leidas_label = Gtk.Label(label="Paginas Leidas")
-        self.paginas_leidas: Gtk.Entry = Gtk.Entry()
+        self.paginas_leidas: Gtk.Entry = Gtk.Entry(placeholder_text="12")
         if libro:
             self.paginas_leidas.set_text(str(libro.paginas_leidas))
         
@@ -95,7 +95,7 @@ class Formulario(Gtk.Window):
         layout.attach_next_to(self.paginas_leidas, paginas_leidas_label, Gtk.PositionType.RIGHT, 1, 1)
 
         paginas_totales_label = Gtk.Label(label="Paginas Totales")
-        self.paginas_totales: Gtk.Entry = Gtk.Entry()
+        self.paginas_totales: Gtk.Entry = Gtk.Entry(placeholder_text="200")
         if libro:
             self.paginas_totales.set_text(str(libro.paginas_totales))
         
